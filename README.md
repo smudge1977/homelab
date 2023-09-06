@@ -24,8 +24,9 @@ Graphana | http://gpe.keithmarston.me.uk:3000 | admin | letmein123!
 Prometheus DB | https://gpe.keithmarston.me.uk:9090 | promadmin | letmein123! | /metrics | Push data in to DB
 Prometheus Node Exporter | http://gpe.keithmarston.me.uk:9100 |  | | /metrics | which one has the metrics?
 InfluxDB | http://gpe.keithmarston.me.uk:8086 | admin | letmein123!
-InfluxDB | udp:8089 | | | | UDP Metics reciever (Used by ProxMox)
-
+InfluxDB | udp:influxdb.kmarston.me.uk:8089 | | | | UDP Metics reciever (Used by ProxMox)
+Lokki | http://gpe.keithmarston.me.uk:3100 ||||The user / Graphana end
+Lokki | http:9080 |||| The promtail end where we injest gRPC port 9095(Is prometheus already using Promtail???)
 
 
 # Setup for Graphana and Prometeus
@@ -47,7 +48,8 @@ flowchart TD
     promethus -->|tcp:9100\nscraper jobs and instances| node_exporter
     Graphana --->|tcp:9090| promethus[Promethus\nTime series]
     Graphana --->|tcp:8086| influx[InfluxDB\nTime series]
-    telgraf -->|tcp:8086| influx
+    telegraf -->|tcp:8086| influx
+    telegraf --> sys[system\nsensors]
     agent[other influx source] -->|tcp:8086| influx
 ```
 
