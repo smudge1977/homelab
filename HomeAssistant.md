@@ -15,7 +15,7 @@ this is what the plugs mqtt will then use
 
 ## Flashing WiFi plugs
 ```
-git clone https://github.com/ct-Open-Source/
+git clone https://github.com/ct-Open-Source/tuya-convert.git
 sudo ./install_prereq.sh
 sudo ./start_flash.sh
 ```
